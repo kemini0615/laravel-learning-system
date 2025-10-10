@@ -13,10 +13,11 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
+        // create() 메소드는 Eloquent ORM, 강력하고 기능이 많지만, 대량의 데이터 투입에는 부적합하다
         Admin::create([
             'name' => 'Admin',
             'email' => 'admin@test.com',
-            'password' => bcrypt('adminadmin'),
+            'password' => bcrypt('password'),
         ]);
     }
 }

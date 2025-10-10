@@ -1,21 +1,32 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\InstructorDashboardController;
+use App\Http\Controllers\User\StudentDashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+/**
+ * Instructor Routes
+ */
+Route::middleware(['auth:web', 'verified', 'role:instructor'])
+    ->prefix('instructor')
+    ->name('instructor.')
+    ->group(function () {
+        Route::get('dashboard', [InstructorDashboardController::class, 'index'])->name('dashboard');
+    });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+/**
+ * Student Routes
+ */
+Route::middleware(['auth:web', 'verified', 'role:student'])
+    ->prefix('student')
+    ->name('student.')
+    ->group(function () {
+        Route::get('dashboard', [StudentDashboardController::class, 'index'])->name('dashboard');
+    });
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
