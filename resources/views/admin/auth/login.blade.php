@@ -23,6 +23,8 @@
             font-feature-settings: "cv03", "cv04", "cv11";
         }
     </style>
+    <!-- Vite가 관리하는 프론트엔드 애셋 파일을 불러오는 HTML 태그(link, script 등)를 자동으로 생성한다  -->
+    @vite(['resources/js/admin/login.js'])
 </head>
 
 <body class=" d-flex flex-column">
@@ -63,7 +65,7 @@
                                 <input id="password" class="form-control" type="password" name="password"
                                     placeholder="Your password" autocomplete="off" required />
 
-                                <span class="input-group-text">
+                                <span id="toggle-password" class="input-group-text">
                                     <a href="#" class="link-secondary" title="Show password"
                                         data-bs-toggle="tooltip"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"

@@ -23,6 +23,7 @@
             font-feature-settings: "cv03", "cv04", "cv11";
         }
     </style>
+    @vite(['resources/js/admin/login.js'])
 </head>
 
 <body class=" d-flex flex-column">
@@ -64,7 +65,7 @@
                                 <input id="password" class="form-control" type="password" name="password"
                                     placeholder="New password" autocomplete="off" required />
 
-                                <span class="input-group-text">
+                                <span id="toggle-password" class="input-group-text">
                                     <a href="#" class="link-secondary" title="Show password"
                                         data-bs-toggle="tooltip"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
@@ -88,7 +89,7 @@
                                 <input id="password_confirmation" class="form-control" type="password" name="password_confirmation"
                                     placeholder="Confirm password" autocomplete="off" required />
 
-                                <span class="input-group-text">
+                                <span id="toggle-confirm-password" class="input-group-text">
                                     <a href="#" class="link-secondary" title="Show password"
                                         data-bs-toggle="tooltip"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
