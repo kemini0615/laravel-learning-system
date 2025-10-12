@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\User\InstructorDashboardController;
-use App\Http\Controllers\User\StudentDashboardController;
+use App\Http\Controllers\Frontend\InstructorDashboardController;
+use App\Http\Controllers\Frontend\StudentDashboardController;
+use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/**
+ * Home Route
+ */
+Route::get('/', [FrontendController::class, 'index'])->name('home');
 
 /**
  * Instructor Routes
