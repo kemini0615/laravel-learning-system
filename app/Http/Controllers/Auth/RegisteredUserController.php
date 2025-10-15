@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Traits\FileUpload;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,6 +15,8 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
+    use FileUpload;
+
     /**
      * Display the registration view.
      */
@@ -35,22 +38,32 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Password::defaults()],
         ]);
 
-        if ($request->type === 'student') {
-            $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'role' => 'student',
-                'status' => 'approved',
-            ]);
-        } elseif ($request->type === 'instructor') {
-            $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'role' => 'student',
-                'status' => 'pending',
-            ]);
+        switch ($request->type) {
+            case 'student':
+                $user = User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'role' => 'student',
+                    'status' => 'approved',
+                ]);
+                break;
+            case 'instructor':
+                $request->validate(['attachment' => 'required|mimes:jpg,png,pdf,doc,docx|max:30000']);
+                $filePath = $this->uploadFile($request->file('attachment'));
+
+                $user = User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'role' => 'student',
+                    'status' => 'pending',
+                    'attachment' => $filePath,
+                ]);
+                break;
+            default:
+                abort(404);
+                break;
         }
 
         event(new Registered($user));
