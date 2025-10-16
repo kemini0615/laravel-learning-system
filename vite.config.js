@@ -6,6 +6,7 @@ export default defineConfig({
         laravel({
             input: [
                 "resources/css/app.css",
+                "resources/css/admin.css", // Vite가 번들링할 파일 추가
                 "resources/css/frontend.css", // Vite가 번들링할 파일 추가
                 "resources/js/app.js",
                 "resources/js/admin/login.js", // Vite가 번들링할 파일 추가

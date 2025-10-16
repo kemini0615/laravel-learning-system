@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\InstructorRequestController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:admin')
@@ -61,4 +62,6 @@ Route::middleware('auth:admin')
 
         Route::get('dashboard', [AdminDashboardController::class, 'index'])
             ->name('dashboard');
+
+        Route::resource('instructor-requests', InstructorRequestController::class);
     });
