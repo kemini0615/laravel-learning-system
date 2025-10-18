@@ -9,7 +9,7 @@ export default defineConfig({
                 "resources/css/admin.css", // Vite가 번들링할 파일 추가
                 "resources/css/frontend.css", // Vite가 번들링할 파일 추가
                 "resources/js/app.js",
-                "resources/js/admin/login.js", // Vite가 번들링할 파일 추가
+                "resources/js/admin/index.js", // Vite가 번들링할 파일 추가
             ],
             refresh: true,
         }),

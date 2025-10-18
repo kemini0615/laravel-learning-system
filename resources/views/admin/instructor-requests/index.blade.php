@@ -27,6 +27,8 @@
                                         <td>
                                             @if ($user->status === 'pending')
                                                 <span class="badge bg-yellow text-yellow-fg">Pending</span>
+                                            @elseif ($user->status === 'rejected')
+                                                <span class="badge bg-red text-red-fg">Rejected</span>
                                             @endif
                                         </td>
                                         <td>
@@ -43,11 +45,14 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <form action="">
-                                                <select name="" id="" class="form-control">
-                                                    <option value="pending" selected disabled>Select Action</option>
-                                                    <option value="approve">Approve</option>
-                                                    <option value="reject">Reject</option>
+                                            <form action="{{ route('admin.instructor-requests.update', $user->id) }}" method="POST" id="status-{{ $user->id }}">
+                                                @csrf
+                                                @method('PUT')
+                                                <select name="status" class="form-control" onchange="document.getElementById('status-{{ $user->id }}').submit();">
+                                                    <option selected disabled>Select Action</option>
+                                                    <option value="pending">Pending</option>
+                                                    <option value="approved">Approve</option>
+                                                    <option value="rejected">Reject</option>
                                                 </select>
                                             </form>
                                         </td>

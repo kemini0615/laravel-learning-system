@@ -24,7 +24,7 @@
         }
     </style>
     <!-- Vite가 관리하는 프론트엔드 애셋 파일을 불러오는 HTML 태그(link, script 등)를 자동으로 생성한다  -->
-    @vite(['resources/js/admin/login.js'])
+    @vite(['resources/js/admin/index.js'])
 </head>
 
 <body class=" d-flex flex-column">

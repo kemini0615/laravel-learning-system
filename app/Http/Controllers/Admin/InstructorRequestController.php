@@ -13,7 +13,9 @@ class InstructorRequestController extends Controller
      */
     public function index()
     {
-        $pendingUsers = User::where('status', 'pending')->get();
+        $pendingUsers = User::where('status', 'pending')
+            ->orWhere('status', 'rejected')
+            ->get();
         return view('admin.instructor-requests.index', compact('pendingUsers'));
     }
 
@@ -52,9 +54,17 @@ class InstructorRequestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $instructor_request)
     {
-        //
+        $request->validate(['status' => ['required', 'in:pending,approved,rejected']]);
+
+        $instructor_request->status = $request->status;
+        if ($request->status === 'approve') {
+            $instructor_request->role = 'instructor';
+        }
+        $instructor_request->save();
+
+        return redirect()->back();
     }
 
     /**
