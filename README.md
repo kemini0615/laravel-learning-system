@@ -1,5 +1,11 @@
 # Mydemy
 
+## 0. Tech Stack & Tools
+
+-   [Mailtrap](https://mailtrap.io/)
+-   [Tabler](https://tabler.io/admin-template)
+-   [Email Template](https://github.com/leemunroe/responsive-html-email-template)
+
 ## 1. Users
 
 유저의 유형은 3가지가 존재한다
