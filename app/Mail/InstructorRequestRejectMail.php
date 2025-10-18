@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class InstructorRequestApprovedMail extends Mailable
+class InstructorRequestRejectMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -27,7 +27,7 @@ class InstructorRequestApprovedMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Your instructor request has been approved.',
+            subject: 'Your instructor request has been rejected.',
         );
     }
 
@@ -37,7 +37,7 @@ class InstructorRequestApprovedMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.instructor-request-approved-mail',
+            view: 'mail.instructor-request-reject-mail',
         );
     }
 

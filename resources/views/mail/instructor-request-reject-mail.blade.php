@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Simple Transactional Email</title>
+    <title>Instructor Request Reject Mail</title>
     <style media="all" type="text/css">
         body {
             font-family: Helvetica, sans-serif;
@@ -294,10 +294,8 @@
         <tr>
             <td class="wrapper">
                 <p>Hi there</p>
-                <p>Your instructor request has been approved.</p>
-                <p>From now on, you will be able to publish your own courses.</p>
-                <p>Please click on <a href="{{ url('/instructor/dashboard') }}">here</a> to visit your dashboard.</p>
-                <p>Good luck!</p>
+                <p>Your instructor request has been rejected.</p>
+                <p>Please submit your required attachment again.</p>
             </td>
         </tr>
     </table>
