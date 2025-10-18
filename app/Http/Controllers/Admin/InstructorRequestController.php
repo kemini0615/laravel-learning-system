@@ -74,4 +74,9 @@ class InstructorRequestController extends Controller
     {
         //
     }
+
+    public function download(User $user)
+    {
+        return response()->download(public_path($user->attachment));
+    }
 }

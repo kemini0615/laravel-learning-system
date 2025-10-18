@@ -8,7 +8,7 @@ trait FileUpload
 {
     public function uploadFile(UploadedFile $file, string $dir = 'uploads')
     {
-        $fileName = 'mydemy_' . uniqid() . '_' . $file->getClientOriginalExtension();
+        $fileName = 'mydemy_' . uniqid() . '.' . $file->getClientOriginalExtension();
 
         $file->move(public_path($dir), $fileName);
 

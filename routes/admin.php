@@ -63,5 +63,6 @@ Route::middleware('auth:admin')
         Route::get('dashboard', [AdminDashboardController::class, 'index'])
             ->name('dashboard');
 
+        Route::get('instructor-attachment/{user}', [InstructorRequestController::class, 'download'])->name('instructor-attachment');
         Route::resource('instructor-requests', InstructorRequestController::class);
     });
