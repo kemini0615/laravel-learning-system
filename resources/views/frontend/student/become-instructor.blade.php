@@ -29,18 +29,26 @@
                 @include('frontend.student.layouts.sidebar')
 
                 <div class="col-xl-9 col-md-8">
-                    <div class="card">
+                    <div class="text-end">
+                        <a href="{{ route('student.dashboard') }}" class="common_btn">Back</a>
+                    </div>
+                    <div class="card mt-4">
+
                         <div class="card-header">
                             Become an Instructor
                         </div>
                         <div class="card-body">
-                            <form action="">
+                            <form action="{{ route('student.become-instructor.update', auth()->user()->id) }}"
+                                method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
                                 <div class="from-group">
                                     <label for="attachment">Attachment</label>
                                     <input type="file" name="attachment" id="attachment">
+                                    <x-input-error :messages="$errors->get('attachment')" class="mt-2" />
                                 </div>
                                 <div class="from-group mt-3">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="common_btn">Submit</button>
                                 </div>
                             </form>
                         </div>

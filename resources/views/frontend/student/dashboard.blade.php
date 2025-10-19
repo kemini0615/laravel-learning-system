@@ -26,11 +26,11 @@
         <div class="container">
             <div class="row">
                 <!-- Sidebar -->
-                @include('frontend.student-dashboard.layouts.sidebar')
+                @include('frontend.student.layouts.sidebar')
 
                 <div class="col-xl-9 col-md-8">
-                    <!-- Alert -->
                     @if (auth()->user()->status === 'pending')
+                        <!-- Alert -->
                         <div class="alert alert-primary d-flex align-items-center" role="alert">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" width="24" height="24"
@@ -43,11 +43,14 @@
                                 you an email when it is approved.
                             </div>
                         </div>
+                    @else
+                        <!-- Become instructor button -->
+                        <div class="text-end">
+                            <a href="{{ route('student.become-instructor') }}" class="common_btn">Become an
+                                instructor</a>
+                        </div>
                     @endif
 
-                    <div class="text-end">
-                        <a href="{{ route('student.become-instructor') }}" class="btn btn-primary">Become an instructor</a>
-                    </div>
 
                     <div class="row">
                         <div class="col-xl-4 col-sm-6 wow fadeInUp">
