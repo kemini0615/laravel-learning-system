@@ -28,6 +28,7 @@ Route::middleware(['auth:web', 'verified', 'role:student'])
     ->name('student.')
     ->group(function () {
         Route::get('dashboard', [StudentDashboardController::class, 'index'])->name('dashboard');
+        Route::get('become-instructor', [StudentDashboardController::class, 'becomeInstructor'])->name('become-instructor');
     });
 
 require __DIR__ . '/auth.php';
