@@ -4,6 +4,7 @@ use App\Http\Controllers\Frontend\InstructorDashboardController;
 use App\Http\Controllers\Frontend\StudentDashboardController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\ProfileController;
+use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -33,6 +34,7 @@ Route::middleware(['auth:web', 'verified', 'role:student'])
         Route::put('become-instructor/{user}', [StudentDashboardController::class, 'becomeInstructorUpdate'])->name('become-instructor.update');
 
         Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+        Route::put('profile/update', [ProfileController::class, 'update'])->name('profile.update');
     });
 
 require __DIR__ . '/auth.php';
