@@ -30,6 +30,7 @@
 
                 <!-- Profile -->
                 <div class="col-xl-9 col-md-8 wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
+                    <!-- Profile -->
                     <div class="wsus__dashboard_contant">
                         <div class="wsus__dashboard_contant_top d-flex flex-wrap justify-content-between">
                             <div class="wsus__dashboard_heading">
@@ -56,7 +57,8 @@
                             </div>
                         </div>
 
-                        <form action="{{ route('student.profile.update') }}" method="POST" class="wsus__dashboard_profile_update">
+                        <form action="{{ route('student.profile.update') }}" method="POST"
+                            class="wsus__dashboard_profile_update">
                             @csrf
                             @method('PUT')
                             <div class="row">
@@ -64,7 +66,8 @@
                                 <div class="col-xl-12">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>Name</label>
-                                        <input type="text" name="name" value="{{ auth()->user()->name }}" placeholder="Enter your name">
+                                        <input type="text" name="name" value="{{ auth()->user()->name }}"
+                                            placeholder="Enter your name">
                                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                     </div>
                                 </div>
@@ -73,7 +76,8 @@
                                 <div class="col-xl-12">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>Headline</label>
-                                        <input type="text" name="headline" value="{{ auth()->user()->headline }}" placeholder="Enter your headline">
+                                        <input type="text" name="headline" value="{{ auth()->user()->headline }}"
+                                            placeholder="Enter your headline">
                                         <x-input-error :messages="$errors->get('headline')" class="mt-2" />
                                     </div>
                                 </div>
@@ -82,7 +86,8 @@
                                 <div class="col-xl-6">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>Email</label>
-                                        <input type="text" name="email" value="{{ auth()->user()->email }}"" placeholder="Enter your email">
+                                        <input type="text" name="email" value="{{ auth()->user()->email }}""
+                                            placeholder="Enter your email">
                                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                     </div>
                                 </div>
@@ -118,6 +123,72 @@
                         </form>
                     </div>
 
+                    <!-- Password -->
+                    <div class="wsus__dashboard_contant">
+                        <div class="wsus__dashboard_contant_top d-flex flex-wrap justify-content-between">
+                            <div class="wsus__dashboard_heading">
+                                <h5>Update Your Credentials</h5>
+                                <p>Update your email and password.</p>
+                            </div>
+                            <div class="wsus__dashboard_profile_delete">
+                                <a href="#" class="common_btn">Delete Profile</a>
+                            </div>
+                        </div>
+
+                        <form action="{{ route('student.profile.update.password') }}" method="POST"
+                            class="wsus__dashboard_profile_update">
+                            @csrf
+                            @method('PUT')
+                            <div class="row">
+                                <!-- Email -->
+                                <div class="col-xl-12">
+                                    <div class="wsus__dashboard_profile_update_info">
+                                        <label>Email</label>
+                                        <input type="email" name="email" value="{{ auth()->user()->email }}"
+                                            placeholder="Enter your email">
+                                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                    </div>
+                                </div>
+
+                                <!-- Password -->
+                                <div class="col-xl-12">
+                                    <div class="wsus__dashboard_profile_update_info">
+                                        <label>Current Password</label>
+                                        <input type="password" name="current_password"
+                                            placeholder="Enter your current password">
+                                        <x-input-error :messages="$errors->get('current_password')" class="mt-2" />
+                                    </div>
+                                </div>
+
+                                <!-- Password -->
+                                <div class="col-xl-6">
+                                    <div class="wsus__dashboard_profile_update_info">
+                                        <label>New Password</label>
+                                        <input type="password" name="password" placeholder="Enter your new password">
+                                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                    </div>
+                                </div>
+
+                                <!-- Confirm password -->
+                                <div class="col-xl-6">
+                                    <div class="wsus__dashboard_profile_update_info">
+                                        <label>Confirm Password</label>
+                                        <input type="password" name="password_confirmation"
+                                            placeholder="Enter your new password">
+                                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-12">
+                                    <div class="wsus__dashboard_profile_update_btn">
+                                        <button type="submit" class="common_btn">Update Password</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- SNS accounts -->
                     <div class="wsus__dashboard_contant">
                         <div class="wsus__dashboard_contant_top d-flex flex-wrap justify-content-between">
                             <div class="wsus__dashboard_heading">

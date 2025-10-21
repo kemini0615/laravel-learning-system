@@ -35,6 +35,7 @@ Route::middleware(['auth:web', 'verified', 'role:student'])
 
         Route::get('profile', [ProfileController::class, 'index'])->name('profile');
         Route::put('profile/update', [ProfileController::class, 'update'])->name('profile.update');
+        Route::put('profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.update.password');
     });
 
 require __DIR__ . '/auth.php';

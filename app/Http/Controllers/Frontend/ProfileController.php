@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Requests\Frontend\PasswordUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,6 +24,15 @@ class ProfileController extends Controller
         $user->bio = $request->about;
         $user->headline = $request->headline;
         $user->gender = $request->gender;
+        $user->save();
+
+        return redirect()->back();
+    }
+
+    public function updatePassword(PasswordUpdateRequest $request)
+    {
+        $user = Auth::user();
+        $user->password = $request->password;
         $user->save();
 
         return redirect()->back();
