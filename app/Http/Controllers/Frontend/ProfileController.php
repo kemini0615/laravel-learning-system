@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Requests\Frontend\PasswordUpdateRequest;
+use App\Http\Requests\Frontend\SnsUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -33,6 +34,19 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $user->password = $request->password;
+        $user->save();
+
+        return redirect()->back();
+    }
+
+    public function updateSns(SnsUpdateRequest $request)
+    {
+        $user = Auth::user();
+        $user->facebook = $request->facebook;
+        $user->x = $request->x;
+        $user->linkedin = $request->linkedin;
+        $user->github = $request->github;
+        $user->website = $request->website;
         $user->save();
 
         return redirect()->back();

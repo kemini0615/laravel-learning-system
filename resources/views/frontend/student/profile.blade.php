@@ -188,38 +188,52 @@
                         </form>
                     </div>
 
-                    <!-- SNS accounts -->
+                    <!-- SNS links -->
                     <div class="wsus__dashboard_contant">
                         <div class="wsus__dashboard_contant_top d-flex flex-wrap justify-content-between">
                             <div class="wsus__dashboard_heading">
                                 <h5>Update Your SNS</h5>
-                                <p>Manage your courses and its update like live, draft and insight.</p>
+                                <p>Manage your SNS links.</p>
                             </div>
                         </div>
 
-                        <form action="#" class="wsus__dashboard_profile_update">
+                        <form action="{{ route('student.profile.update.sns') }}" method="POST" class="wsus__dashboard_profile_update">
+                            @csrf
+                            @method('PUT')
                             <div class="row">
                                 <!-- Facebook -->
-                                <div class="col-xl-12">
+                                <div class="col-xl-6">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>Facebook</label>
-                                        <input type="text" name="facebook" placeholder="">
+                                        <input type="text" name="facebook" value="{{ auth()->user()->facebook }}" placeholder="Enter your Facebook URL">
+                                        <x-input-error :messages="$errors->get('facebook')" class="mt-2" />
                                     </div>
                                 </div>
 
                                 <!-- X -->
-                                <div class="col-xl-12">
+                                <div class="col-xl-6">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>X</label>
-                                        <input type="text" name="x" placeholder="">
+                                        <input type="text" name="x" value="{{ auth()->user()->x }}" placeholder="Enter your X URL">
+                                        <x-input-error :messages="$errors->get('x')" class="mt-2" />
                                     </div>
                                 </div>
 
                                 <!-- Linkedin -->
-                                <div class="col-xl-12">
+                                <div class="col-xl-6">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>Linkedin</label>
-                                        <input type="text" name="linkedin" placeholder="">
+                                        <input type="text" name="linkedin" value="{{ auth()->user()->linkedin }}" placeholder="Enter your Linkedin URL">
+                                        <x-input-error :messages="$errors->get('linkedin')" class="mt-2" />
+                                    </div>
+                                </div>
+
+                                <!-- Github -->
+                                <div class="col-xl-6">
+                                    <div class="wsus__dashboard_profile_update_info">
+                                        <label>Github</label>
+                                        <input type="text" name="github" value="{{ auth()->user()->github }}" placeholder="Enter your github URL">
+                                        <x-input-error :messages="$errors->get('github')" class="mt-2" />
                                     </div>
                                 </div>
 
@@ -227,7 +241,14 @@
                                 <div class="col-xl-12">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>Personal website</label>
-                                        <input type="text" name="personal_website" placeholder="">
+                                        <input type="text" name="website" value="{{ auth()->user()->website }}" placeholder="Enter your website URL">
+                                        <x-input-error :messages="$errors->get('website')" class="mt-2" />
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-12">
+                                    <div class="wsus__dashboard_profile_update_btn">
+                                        <button type="submit" class="common_btn">Update SNS</button>
                                     </div>
                                 </div>
                             </div>
