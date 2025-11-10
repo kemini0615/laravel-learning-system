@@ -37,30 +37,27 @@
                                 <h5>Update Your Information</h5>
                                 <p>Manage your courses and its update like live, draft and insight.</p>
                             </div>
-                            <div class="wsus__dashboard_profile_delete">
-                                <a href="#" class="common_btn">Delete Profile</a>
-                            </div>
                         </div>
-
-                        <div class="wsus__dashboard_profile wsus__dashboard_profile_avatar">
-                            <div class="img">
-                                <img src="{{ asset(auth()->user()->image) }}" alt="profile" class="img-fluid w-100">
-                                <label for="profile_photo">
-                                    <img src="{{ asset('frontend/assets/images/dash_camera.png') }}" alt="camera"
-                                        class="img-fluid w-100">
-                                </label>
-                                <input type="file" id="profile_photo" hidden="">
-                            </div>
-                            <div class="text">
-                                <h6>Your avatar</h6>
-                                <p>PNG or JPG no bigger than 400px wide and tall.</p>
-                            </div>
-                        </div>
-
                         <form action="{{ route('student.profile.update') }}" method="POST"
-                            class="wsus__dashboard_profile_update">
+                            class="wsus__dashboard_profile_update" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
+
+                            <div class="wsus__dashboard_profile wsus__dashboard_profile_avatar">
+                                <div class="img">
+                                    <img src="{{ asset(auth()->user()->image) }}" alt="profile" class="img-fluid w-100">
+                                    <label for="profile_photo">
+                                        <img src="{{ asset('frontend/assets/images/dash_camera.png') }}" alt="camera"
+                                            class="img-fluid w-100">
+                                    </label>
+                                    <input type="file" id="profile_photo" name="avatar" hidden>
+                                </div>
+                                <div class="text">
+                                    <h6>Your avatar</h6>
+                                    <p>PNG or JPG no bigger than 400px wide and tall.</p>
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <!-- Name -->
                                 <div class="col-xl-12">
@@ -130,9 +127,6 @@
                                 <h5>Update Your Credentials</h5>
                                 <p>Update your email and password.</p>
                             </div>
-                            <div class="wsus__dashboard_profile_delete">
-                                <a href="#" class="common_btn">Delete Profile</a>
-                            </div>
                         </div>
 
                         <form action="{{ route('student.profile.update.password') }}" method="POST"
@@ -197,7 +191,8 @@
                             </div>
                         </div>
 
-                        <form action="{{ route('student.profile.update.sns') }}" method="POST" class="wsus__dashboard_profile_update">
+                        <form action="{{ route('student.profile.update.sns') }}" method="POST"
+                            class="wsus__dashboard_profile_update">
                             @csrf
                             @method('PUT')
                             <div class="row">
@@ -205,7 +200,8 @@
                                 <div class="col-xl-6">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>Facebook</label>
-                                        <input type="text" name="facebook" value="{{ auth()->user()->facebook }}" placeholder="Enter your Facebook URL">
+                                        <input type="text" name="facebook" value="{{ auth()->user()->facebook }}"
+                                            placeholder="Enter your Facebook URL">
                                         <x-input-error :messages="$errors->get('facebook')" class="mt-2" />
                                     </div>
                                 </div>
@@ -214,7 +210,8 @@
                                 <div class="col-xl-6">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>X</label>
-                                        <input type="text" name="x" value="{{ auth()->user()->x }}" placeholder="Enter your X URL">
+                                        <input type="text" name="x" value="{{ auth()->user()->x }}"
+                                            placeholder="Enter your X URL">
                                         <x-input-error :messages="$errors->get('x')" class="mt-2" />
                                     </div>
                                 </div>
@@ -223,7 +220,8 @@
                                 <div class="col-xl-6">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>Linkedin</label>
-                                        <input type="text" name="linkedin" value="{{ auth()->user()->linkedin }}" placeholder="Enter your Linkedin URL">
+                                        <input type="text" name="linkedin" value="{{ auth()->user()->linkedin }}"
+                                            placeholder="Enter your Linkedin URL">
                                         <x-input-error :messages="$errors->get('linkedin')" class="mt-2" />
                                     </div>
                                 </div>
@@ -232,7 +230,8 @@
                                 <div class="col-xl-6">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>Github</label>
-                                        <input type="text" name="github" value="{{ auth()->user()->github }}" placeholder="Enter your github URL">
+                                        <input type="text" name="github" value="{{ auth()->user()->github }}"
+                                            placeholder="Enter your github URL">
                                         <x-input-error :messages="$errors->get('github')" class="mt-2" />
                                     </div>
                                 </div>
@@ -241,7 +240,8 @@
                                 <div class="col-xl-12">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>Personal website</label>
-                                        <input type="text" name="website" value="{{ auth()->user()->website }}" placeholder="Enter your website URL">
+                                        <input type="text" name="website" value="{{ auth()->user()->website }}"
+                                            placeholder="Enter your website URL">
                                         <x-input-error :messages="$errors->get('website')" class="mt-2" />
                                     </div>
                                 </div>
