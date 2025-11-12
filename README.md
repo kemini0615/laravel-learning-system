@@ -5,6 +5,7 @@
 -   [Mailtrap](https://mailtrap.io/)
 -   [Tabler](https://tabler.io/admin-template)
 -   [Email Template](https://github.com/leemunroe/responsive-html-email-template)
+-   [PHP Flasher](https://php-flasher.io/)
 
 ## 1. Users
 
