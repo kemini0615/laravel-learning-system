@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('instructor.profile', auth()->user()->id) }}">
+                <a href="{{ route('instructor.profile') }}">
                     <div class="img">
                         <img src="{{ asset('frontend/assets/images/dash_icon_1.png') }}" alt="icon" class="img-fluid w-100">
                     </div>

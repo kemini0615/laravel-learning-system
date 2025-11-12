@@ -20,6 +20,11 @@ Route::middleware(['auth:web', 'verified', 'role:instructor'])
     ->name('instructor.')
     ->group(function () {
         Route::get('dashboard', [InstructorDashboardController::class, 'index'])->name('dashboard');
+
+        Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+        Route::put('profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
+        Route::put('profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.update.password');
+        Route::put('profile/update-sns', [ProfileController::class, 'updateSns'])->name('profile.update.sns');
     });
 
 /**

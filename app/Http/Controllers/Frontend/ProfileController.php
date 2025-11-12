@@ -17,7 +17,8 @@ class ProfileController extends Controller
 
     public function index(Request $request)
     {
-        return view('frontend.student.profile');
+        $user = Auth::user();
+        return view('frontend.' . $user->role . '.profile');
     }
 
     public function updateProfile(ProfileUpdateRequest $request)
